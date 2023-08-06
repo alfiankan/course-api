@@ -4,16 +4,20 @@ services:
   mysql:
     image: mysql:8.0
     ports:
-      - '3306:3306'
+      - 3306:3306
     volumes:
       - ./data/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       TZ: 'UTC'
+      MYSQL_DATABASE: eduqat
 
   mongo:
     image: mongo:latest
     ports:
-      - '27017:27017'
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       - ./data/mongo:/data/db

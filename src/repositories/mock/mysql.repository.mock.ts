@@ -4,24 +4,24 @@ import { CourseCommandRepositoryInteractor } from '../course.repository.interact
 export class MysqlRepositoryMock implements CourseCommandRepositoryInteractor {
   constructor(public courses: Map<string, Course>) {}
 
-  add(course: Course): boolean {
+  async add(course: Course): Promise<boolean> {
     course.validate()
     this.courses.set(course.id, course)
     return true
   }
 
-  update(course: Course): boolean {
+  async update(course: Course): Promise<boolean> {
     course.validate()
     this.courses.set(course.id, course)
     return true
   }
 
-  delete(id: string): boolean {
+  async delete(id: string): Promise<boolean> {
     this.courses.delete(id)
     return true
   }
 
-  getOneById(id: string): Course | null {
+  async getOneById(id: string): Promise<Course | null> {
     if (this.courses.get(id) == undefined) {
       return null
     }

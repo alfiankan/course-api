@@ -4,22 +4,22 @@ import { CourseQueryRepositoryInteractor } from '../course.repository.interactor
 export class DynamoDbRepositoryMock implements CourseQueryRepositoryInteractor {
   constructor(public courses: Map<string, Course>) {}
 
-  add(course: Course): boolean {
+  async add(course: Course): Promise<boolean> {
     course.validate()
     this.courses.set(course.id, course)
     return true
   }
 
-  invalidate(id: string): boolean {
+  async invalidate(id: string): Promise<boolean> {
     this.courses.delete(id)
     return true
   }
 
-  getList(): Array<Course> {
+  async getList(): Promise<Array<Course>> {
     return Array.from(this.courses.values())
   }
 
-  getOneById(id: string): Course | null {
+  async getOneById(id: string): Promise<Course | null> {
     if (this.courses.get(id) == undefined) {
       return null
     }
