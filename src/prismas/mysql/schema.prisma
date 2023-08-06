@@ -1,0 +1,26 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource writedb {
+  provider = "mysql"
+  url      = env("MYSQL_DATABASE_URL")
+}
+
+datasource readdb {
+  provider = "mongodb"
+  url      = env("MONGODB_DATABASE_URL")
+}
+
+
+model Course {
+  id              String                @id @default(uuid()) @db.VarChar(36)
+  slug     String    @unique
+  title    String @db.VarChar(200)
+  description     Text?
+  author_id   String @db.VarChar(36)
+  contents Text?
+}
+
+
