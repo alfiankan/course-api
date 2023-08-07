@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../../../node_modules/prismamongoclient"
+  output   = "./client"
 }
 
 datasource readdb {
@@ -8,7 +8,7 @@ datasource readdb {
   url      = env("MONGODB_DATABASE_URL")
 }
 
-model Course {
+model course {
   id          String    @id @default(auto()) @map("_id") @readdb.ObjectId
   course_id   String
   slug        String

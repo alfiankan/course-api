@@ -1,6 +1,6 @@
 import { Course } from '../entities/course.entity'
 import { CourseQueryRepositoryInteractor } from './course.repository.interactor'
-import { PrismaClient } from '../../node_modules/prismamongoclient'
+import { PrismaClient } from '../prismas/mongodb/client'
 
 export class DynamoDBRepository implements CourseQueryRepositoryInteractor {
   constructor(private mongodb: PrismaClient) {}
@@ -37,9 +37,18 @@ export class DynamoDBRepository implements CourseQueryRepositoryInteractor {
   async getOneById(id: string): Promise<Course | null> {
     const courses = await this.mongodb.course.findFirst({
       where: {
-        id: id,
+        course_id: id,
       },
     })
     return courses as unknown as Course
+  }
+
+  async delete(id: string): Promise<boolean> {
+    await this.mongodb.course.deleteMany({
+      where: {
+        course_id: id,
+      },
+    })
+    return true
   }
 }

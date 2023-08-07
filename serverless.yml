@@ -1,19 +1,43 @@
-org: devpuskapa
-app: course-api
-service: course-api
+service: serverless-http-api-typescript
 frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs16.x
 
 functions:
-  hello:
-    handler: handler.hello
+  getById:
+    handler: handler.getById
     events:
       - httpApi:
-          path: /
+          path: /v1/courses/{id}
           method: get
+  getAll:
+    handler: handler.getAll
+    events:
+      - httpApi:
+          path: /v1/courses
+          method: get
+  addNew:
+    handler: handler.addNew
+    events:
+      - httpApi:
+          path: /v1/courses
+          method: post
+  edit:
+    handler: handler.edit
+    events:
+      - httpApi:
+          path: /v1/courses/{id}
+          method: put
+  deleteById:
+    handler: handler.deleteById
+    events:
+      - httpApi:
+          path: /v1/courses/{id}
+          method: delete
 
 plugins:
-  - serverless-plugin-typescript
+  - serverless-dotenv-plugin
+  - serverless-esbuild
+  - serverless-offline

@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../../../node_modules/prismamysqlclient"
+  output   = "./client"
 }
 
 datasource writedb {
@@ -8,7 +8,7 @@ datasource writedb {
   url      = env("MYSQL_DATABASE_URL")
 }
 
-model Course {
+model course {
   id          String    @id @default(uuid()) @writedb.VarChar(36)
   slug        String    @unique
   title       String    @writedb.VarChar(200)

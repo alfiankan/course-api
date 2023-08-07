@@ -7,9 +7,9 @@ export class Course {
   description: string
   author_id?: string
   contents: string
-  createdAt: Date
-  updatedAt: Date
-  deletedAt: Date
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
 
   validate(): boolean {
     // validate slug

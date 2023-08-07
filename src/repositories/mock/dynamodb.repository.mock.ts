@@ -25,4 +25,8 @@ export class DynamoDbRepositoryMock implements CourseQueryRepositoryInteractor {
     }
     return this.courses.get(id)!
   }
+
+  async delete(id: string): Promise<boolean> {
+    return this.courses.delete(id)
+  }
 }
