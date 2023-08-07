@@ -21,6 +21,8 @@ describe('course management', () => {
       faker.commerce.product(),
       faker.lorem.words({ max: 2, min: 1 }),
       faker.lorem.paragraph(5),
+      uuidv4(),
+      faker.lorem.slug(),
     )
 
     const courses = await courseService.getList()
@@ -34,6 +36,8 @@ describe('course management', () => {
         faker.commerce.product(),
         faker.lorem.words({ max: 2, min: 1 }),
         faker.lorem.paragraph(5),
+        uuidv4(),
+        faker.lorem.slug(),
       )
     }
 
@@ -47,6 +51,8 @@ describe('course management', () => {
       faker.commerce.product(),
       faker.lorem.words({ max: 2, min: 1 }),
       faker.lorem.paragraph(5),
+      uuidv4(),
+      faker.lorem.slug(),
     )
 
     const course = await courseService.getList()
@@ -64,6 +70,8 @@ describe('course management', () => {
       faker.commerce.product(),
       faker.lorem.words({ max: 2, min: 1 }),
       faker.lorem.paragraph(5),
+      uuidv4(),
+      faker.lorem.slug(),
     )
 
     const course = await courseService.getList()
