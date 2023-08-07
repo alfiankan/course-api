@@ -12,6 +12,9 @@
 - run `mysql` docker container `docker compose up -d`
 - create mongodb cluster and db on atlas https://cloud.mongodb.com/
 - setup `.env` copy `env.example` to `.env` and replace the `mysql` and `mongo` server uri
+- Generate prisma client
+  - run `pnpm prisma generate --schema src/prismas/mongodb/schema.prisma` for mongo, then
+  - run `pnpm prisma generate --schema src/prismas/mysql/schema.prisma` for mysql
 - run migration for mysql `pnpm migrate`
 - run serverless offline server for api testing `sls offline start`
 
