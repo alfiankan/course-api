@@ -1,4 +1,4 @@
-service: serverless-http-api-typescript
+service: eduqat-course
 frameworkVersion: '3'
 
 provider:
